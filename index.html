@@ -2,49 +2,69 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0e6b4f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="حصن المسلم">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>أذكار الصباح والمساء والأدعية وورد المحاسبة | حصن المسلم</title>
 <style>
   :root{
-    --bg:#f7f3e8; --bg2:#fffdf6; --card:#ffffff; --text:#2b2b2b; --muted:#7a6f5a;
-    --gold:#9a7208; --gold2:#d4af37; --green:#0e6b4f; --green-light:#e6f3ec;
-    --border:#e8dfc7; --shadow:0 8px 28px rgba(120,90,20,.10);
-    --header-bg:linear-gradient(135deg,#0e6b4f 0%,#14532d 55%,#0b3d2e 100%);
+    --bg:#f6f1e5; --bg2:#fffdf6; --card:#ffffff; --text:#2e2a22; --muted:#8a7d63;
+    --gold:#a07c0a; --gold2:#d4af37; --gold-soft:#f7ecd0;
+    --green:#0e6b4f; --green2:#159a72; --green-light:#e7f4ec;
+    --border:#e7dcc2; --shadow:0 6px 22px rgba(120,90,20,.08);
+    --btn-shadow:0 3px 10px rgba(14,107,79,.22);
+    --header-bg:linear-gradient(160deg,#12755a 0%,#0d5a45 55%,#083c2e 100%);
     --red:#b3261e; --red-bg:#fbecea;
+    --radius:18px;
   }
   [data-theme="dark"]{
-    --bg:#12140f; --bg2:#1a1d16; --card:#1e221b; --text:#f0ead8; --muted:#b8ad90;
-    --gold:#d4af37; --gold2:#f0d678; --green:#35c08a; --green-light:#1d3329;
-    --border:#33382c; --shadow:0 8px 28px rgba(0,0,0,.45);
-    --header-bg:linear-gradient(135deg,#0b2e23 0%,#123524 60%,#0a1f18 100%);
+    --bg:#131510; --bg2:#1a1d16; --card:#1f231b; --text:#f0ead8; --muted:#b3a788;
+    --gold:#d4af37; --gold2:#f0d678; --gold-soft:#2c270f;
+    --green:#35c08a; --green2:#25a274; --green-light:#1d3329;
+    --border:#33382c; --shadow:0 6px 22px rgba(0,0,0,.4);
+    --btn-shadow:0 3px 12px rgba(0,0,0,.4);
+    --header-bg:linear-gradient(160deg,#0e3a2d 0%,#0b2e23 60%,#081f17 100%);
     --red:#ff9d94; --red-bg:#33201d;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:"Times New Roman",Times,serif;background:var(--bg);color:var(--text);line-height:2.1;transition:background .3s,color .3s;font-size:18px}
-  header.hero{background:var(--header-bg);color:#fff;padding:36px 20px 28px;text-align:center;border-bottom:4px solid var(--gold2);position:relative;overflow:hidden}
-  header.hero:before{content:"✦ ✦ ✦";display:block;color:var(--gold2);letter-spacing:12px;font-size:15px;margin-bottom:8px}
-  header h1{margin:0;font-size:2.2em}
-  header p{margin:8px auto 0;opacity:.93;font-size:1.02em;max-width:760px}
-  .toolbar{position:sticky;top:0;z-index:50;background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
-  .group{display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:6px 10px;box-shadow:var(--shadow)}
-  button{font-family:"Times New Roman",Times,serif;cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:999px;padding:7px 15px;font-size:16px;transition:.2s}
-  button:hover{border-color:var(--gold);transform:translateY(-1px)}
-  button.active{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1d1600;border-color:var(--gold);font-weight:bold}
-  button.green{background:var(--green);color:#fff;border-color:var(--green)}
-  main{max-width:940px;margin:0 auto;padding:20px 14px 70px}
-  .mainnav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0 6px}
-  .mainnav button{font-size:17px;font-weight:bold;padding:10px 24px}
-  .subnav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0 4px}
+  /* ===== الواجهة العلوية ===== */
+  header.hero{background:var(--header-bg);color:#fff;padding:44px 20px 34px;text-align:center;position:relative;overflow:hidden;border-radius:0 0 28px 28px;box-shadow:var(--shadow)}
+  header.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(212,175,55,.22) 1.5px,transparent 1.5px);background-size:22px 22px;pointer-events:none}
+  header.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(212,175,55,.28),transparent 55%);pointer-events:none}
+  header h1{margin:0;font-size:2.3em;position:relative;z-index:1;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+  header p{margin:10px auto 0;opacity:.95;font-size:1.02em;max-width:720px;position:relative;z-index:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 22px;display:inline-block}
+  /* ===== شريط الأدوات ===== */
+  .toolbar{position:sticky;top:10px;z-index:50;background:var(--bg2);opacity:.97;border:1px solid var(--border);border-radius:20px;padding:10px 12px;margin:14px auto;max-width:940px;width:calc(100% - 20px);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+  .group{display:flex;gap:6px;align-items:center}
+  /* ===== الأزرار (تصميم موحد مبسط) ===== */
+  button{font-family:"Times New Roman",Times,serif;cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:14px;padding:9px 18px;font-size:16px;transition:all .18s ease;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  button:hover{border-color:var(--gold);box-shadow:0 3px 10px rgba(160,124,10,.18);transform:translateY(-1px)}
+  button:active{transform:scale(.97)}
+  button.active{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1d1600;border-color:transparent;font-weight:bold;box-shadow:0 4px 14px rgba(160,124,10,.35)}
+  button.green{background:linear-gradient(135deg,var(--green2),var(--green));color:#fff;border-color:transparent;box-shadow:var(--btn-shadow)}
+  main{max-width:940px;margin:0 auto;padding:8px 14px 70px}
+  .mainnav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 6px}
+  .mainnav button{font-size:17px;font-weight:bold;padding:12px 26px;border-radius:16px}
+  .subnav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0 4px}
+  .subnav button{border-radius:999px}
   .notice{background:var(--card);border:1px solid var(--border);border-right:5px solid var(--gold);border-radius:14px;padding:12px 16px;margin:14px 0;box-shadow:var(--shadow);font-size:.97em}
-  .progress-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px 16px;margin:14px 0;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .progress-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;margin:14px 0;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
   .progress-bar{flex:1;min-width:170px;height:12px;background:var(--bg);border:1px solid var(--border);border-radius:999px;overflow:hidden}
-  .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold2),var(--green));transition:width .4s}
-  .section-title{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1d1600;font-weight:bold;border-radius:14px;padding:10px 18px;margin:26px 0 8px;font-size:1.2em;box-shadow:var(--shadow)}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;margin:14px 0;box-shadow:var(--shadow);position:relative;overflow:hidden}
-  .card:before{content:"";position:absolute;top:0;right:0;left:0;height:4px;background:linear-gradient(90deg,var(--gold2),var(--gold),var(--gold2))}
+  .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold2),var(--green));transition:width .4s;border-radius:999px}
+  .section-title{font-weight:bold;border-radius:12px;padding:8px 4px;margin:26px 0 8px;font-size:1.25em;color:var(--green);border-bottom:2px solid var(--gold);display:flex;align-items:center;gap:8px}
+  .section-title:before{content:"";width:10px;height:26px;border-radius:6px;background:linear-gradient(180deg,var(--gold2),var(--gold))}
+  /* ===== البطاقات ===== */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin:14px 0;box-shadow:var(--shadow);position:relative;transition:border-color .25s}
   .card.done{border-color:var(--green);background:var(--green-light)}
   .card-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
-  .card-num{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1d1600;font-weight:bold;border-radius:999px;padding:2px 14px;font-size:15px}
+  .card-num{background:var(--gold-soft);color:var(--gold);font-weight:bold;border-radius:10px;padding:3px 14px;font-size:15px;border:1px solid var(--gold)}
   .repeat-badge{background:var(--green-light);color:var(--green);border:1px solid var(--green);border-radius:999px;padding:2px 12px;font-size:15px;font-weight:bold}
   [data-theme="dark"] .repeat-badge{color:var(--gold2);border-color:var(--gold2)}
   .grade{display:inline-block;border-radius:999px;padding:1px 12px;font-size:14px;font-weight:bold;margin-inline-start:6px;border:1px solid}
@@ -56,30 +76,36 @@
   .source{background:var(--bg);border:1px dashed var(--gold);border-radius:12px;padding:8px 12px;font-size:.93em;color:var(--muted);margin:8px 0}
   .source strong{color:var(--gold)}
   .virtue{background:var(--green-light);border-right:4px solid var(--green);border-radius:8px;padding:7px 12px;font-size:.94em;margin:8px 0}
-  .counter-row{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
-  .count-btn{flex:1;min-width:210px;font-size:19px;font-weight:bold;background:linear-gradient(135deg,var(--green),#0a4a36);color:#fff;border:none;padding:12px;border-radius:14px;box-shadow:0 4px 14px rgba(14,107,79,.35)}
+  .counter-row{display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}
+  .count-btn{flex:1;min-width:210px;font-size:20px;font-weight:bold;background:linear-gradient(135deg,var(--green2),var(--green));color:#fff;border:none;padding:14px;border-radius:16px;box-shadow:var(--btn-shadow)}
   .count-btn:active{transform:scale(.97)}
   .count-btn.finished{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1d1600}
-  .reset-btn{background:transparent;font-size:15px}
-  .count-display{font-size:19px;font-weight:bold;min-width:100px;text-align:center}
+  .reset-btn{background:transparent;font-size:15px;box-shadow:none}
+  .listen-btn{background:var(--gold-soft);border-color:var(--gold);color:var(--gold);font-size:15px;box-shadow:none}
+  .listen-btn.playing{background:var(--green);color:#fff;border-color:transparent}
+  .count-display{font-size:19px;font-weight:bold;min-width:100px;text-align:center;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:4px 10px}
   .mini-progress{height:8px;background:var(--bg);border-radius:999px;overflow:hidden;margin-top:10px;border:1px solid var(--border)}
-  .mini-fill{height:100%;background:linear-gradient(90deg,var(--gold2),var(--green));width:0;transition:width .25s}
+  .mini-fill{height:100%;background:linear-gradient(90deg,var(--gold2),var(--green));width:0;transition:width .25s;border-radius:999px}
   .dua-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-  .check{display:flex;gap:10px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:10px 12px;margin:8px 0;cursor:pointer}
-  .check input{width:20px;height:20px;margin-top:8px;accent-color:var(--green)}
+  .check{display:flex;gap:10px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:10px 12px;margin:8px 0;cursor:pointer}
+  .check input{width:22px;height:22px;margin-top:8px;accent-color:var(--green)}
   .check.done{background:var(--green-light);border-color:var(--green)}
   footer{text-align:center;color:var(--muted);padding:26px 12px;font-size:15px}
-  .font-size-label{min-width:40px;text-align:center;font-weight:bold}
-  .listen-btn{background:transparent;font-size:15px}
-  .listen-btn.playing{background:var(--green);color:#fff;border-color:var(--green)}
+  .font-size-label{min-width:40px;text-align:center;font-weight:bold;background:var(--bg);border-radius:8px;padding:2px 6px}
   .res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:10px 0}
-  .res-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
-  .res-card h3{margin:0 0 4px;font-size:1.08em}
+  .res-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+  .res-card h3{margin:0 0 4px;font-size:1.08em;color:var(--green)}
   .res-card p{margin:4px 0 10px;font-size:.92em;color:var(--muted)}
-  .res-card a{display:inline-block;margin:3px 6px 3px 0;padding:6px 14px;border:1px solid var(--gold);border-radius:999px;color:var(--text);text-decoration:none;font-size:15px}
-  .res-card a:hover{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1d1600}
-  select{font-family:"Times New Roman",Times,serif;font-size:15px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:6px 10px}
-  @media(max-width:600px){header h1{font-size:1.55em}.dhikr-text{font-size:1.1em}}
+  .res-card a{display:inline-block;margin:3px 6px 3px 0;padding:7px 16px;border:1px solid var(--gold);border-radius:12px;color:var(--gold);text-decoration:none;font-size:15px;font-weight:bold;transition:.18s}
+  .res-card a:hover{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1d1600;border-color:transparent}
+  select{font-family:"Times New Roman",Times,serif;font-size:15px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:8px 12px}
+  @media(max-width:600px){header.hero{border-radius:0 0 20px 20px;padding:32px 14px 24px}header h1{font-size:1.6em}.dhikr-text{font-size:1.1em}
+    main{padding:6px 10px 60px}.card{padding:16px 14px}
+    .toolbar{top:6px;padding:8px;gap:6px}.mainnav button{font-size:15px;padding:10px 16px}
+    .count-btn{min-width:100%;font-size:18px}
+    .counter-row .count-display{width:100%}
+    button{min-height:44px}
+  }
 </style>
 </head>
 <body data-theme="light">
@@ -909,6 +935,7 @@ function renderResources(box){
 
 /* تهيئة */
 (function(){
+  if('serviceWorker' in navigator){ try{ navigator.serviceWorker.register('sw.js'); }catch(e){} }
   var th = 'light';
   try{ th = localStorage.getItem('hs-theme') || 'light'; }catch(e){}
   document.body.setAttribute('data-theme', th);
